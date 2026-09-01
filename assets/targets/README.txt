@@ -1,0 +1,1 @@
+cartao-ra/assets/targets/README.txt

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cartão Profissional em RA</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TELA INICIAL
+    ====================================================== -->
+
+    <div id="intro">
+
+        <div class="intro-card">
+
+            <div class="badge">
+                REALIDADE AUMENTADA
+            </div>
+
+            <h1>
+                Meu Cartão Profissional
+            </h1>
+
+            <p>
+                Aponte a câmera do celular para o cartão profissional
+                para visualizar as informações em realidade aumentada.
+            </p>
+
+            <div class="steps">
+
+                <div>
+                    <span>1</span>
+                    Permita o acesso à câmera.
+                </div>
+
+                <div>
+                    <span>2</span>
+                    Aponte para o cartão.
+                </div>
+
+                <div>
+                    <span>3</span>
+                    Aguarde o reconhecimento.
+                </div>
+
+            </div>
+
+            <button id="startButton">
+                Iniciar experiência
+            </button>
+
+            <p class="notice">
+                O arquivo
+                <strong>targets.mind</strong>
+                deve ser colocado em
+                <code>assets/targets/</code>.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STATUS DA EXPERIÊNCIA
+    ====================================================== -->
+
+    <div id="status" class="status">
+        Aguardando câmera...
+    </div>
+
+
+    <!-- =====================================================
+         CENA A-FRAME + MINDAR
+    ====================================================== -->
+
+    <a-scene
+        id="arScene"
+
+        mindar-image="
+            imageTargetSrc: assets/targets/targets.mind;
+            autoStart: false;
+            uiLoading: no;
+            uiScanning: no;
+            uiError: no;
+        "
+
+        color-space="sRGB"
+
+        renderer="
+            colorManagement: true;
+            physicallyCorrectLights
+        "
+
+        vr-mode-ui="enabled: false"
+
+        device-orientation-permission-ui="enabled: false"
+
+        embedded
+    >
+
+        <!-- =================================================
+             ASSETS
+        ================================================== -->
+
+        <a-assets>
+
+            <!-- Modelo de painel -->
+
+            <a-mixin
+                id="panel"
+
+                geometry="
+                    primitive: plane;
+                    width: 1.55;
+                    height: 0.82
+                "
+
+                material="
+                    color: #111318;
+                    opacity: 0.94;
+                    shader: flat
+                "
+            ></a-mixin>
+
+
+            <!-- Barra azul -->
+
+            <a-mixin
+                id="accent"
+
+                geometry="
+                    primitive: box;
+                    width: 0.04;
+                    height: 0.66;
+                    depth: 0.015
+                "
+
+                material="
+                    color: #38bdf8;
+                    shader: flat
+                "
+            ></a-mixin>
+
+        </a-assets>
+
+
+        <!-- =================================================
+             CÂMERA
+        ================================================== -->
+
+        <a-camera
+            position="0 0 0"
+            look-controls="enabled: false"
+        ></a-camera>
+
+
+        <!-- =================================================
+             TARGET
+        ================================================== -->
+
+        <a-entity
+            id="target"
+            mindar-image-target="targetIndex: 0"
+        >
+
+
+            <!-- =================================================
+                 BLOCO 1 - APRESENTAÇÃO
+            ================================================== -->
+
+            <a-entity
+                position="0 0.92 0.02"
+                rotation="0 0 0"
+                scale="1 1 1"
+            >
+
+                <a-entity mixin="panel"></a-entity>
+
+                <a-entity
+                    mixin="accent"
+                    position="-0.73 0 0.02"
+                ></a-entity>
+
+
+                <a-text
+                    value="EDUARDO DURAN"
+
+                    position="-0.60 0.22 0.04"
+
+                    color="#ffffff"
+
+                    width="2.8"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Desenvolvimento de Sistemas"
+
+                    position="-0.60 0.03 0.04"
+
+                    color="#38bdf8"
+
+                    width="2.5"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Tecnologia • Projetos • Soluções"
+
+                    position="-0.60 -0.18 0.04"
+
+                    color="#d1d5db"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+            </a-entity>
+
+
+            <!-- =================================================
+                 BLOCO 2 - SOBRE MIM
+            ================================================== -->
+
+            <a-entity
+                position="-0.88 0.00 0.02"
+                rotation="0 0 0"
+                scale="1 1 1"
+            >
+
+                <a-entity mixin="panel"></a-entity>
+
+                <a-entity
+                    mixin="accent"
+                    position="-0.73 0 0.02"
+                ></a-entity>
+
+
+                <a-text
+                    value="SOBRE MIM"
+
+                    position="-0.60 0.23 0.04"
+
+                    color="#38bdf8"
+
+                    width="2.6"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Estudante de ADS com interesse em"
+
+                    position="-0.60 0.03 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="desenvolvimento web e tecnologia."
+
+                    position="-0.60 -0.13 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+            </a-entity>
+
+
+            <!-- =================================================
+                 BLOCO 3 - HABILIDADES
+            ================================================== -->
+
+            <a-entity
+                position="0.88 0.00 0.02"
+                rotation="0 0 0"
+                scale="1 1 1"
+            >
+
+                <a-entity mixin="panel"></a-entity>
+
+                <a-entity
+                    mixin="accent"
+                    position="-0.73 0 0.02"
+                ></a-entity>
+
+
+                <a-text
+                    value="HABILIDADES"
+
+                    position="-0.60 0.23 0.04"
+
+                    color="#38bdf8"
+
+                    width="2.6"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="HTML • CSS • JavaScript"
+
+                    position="-0.60 0.03 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Git • GitHub • APIs • SQL"
+
+                    position="-0.60 -0.13 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+            </a-entity>
+
+
+            <!-- =================================================
+                 BLOCO 4 - PROJETOS
+            ================================================== -->
+
+            <a-entity
+                position="0 -0.92 0.02"
+                rotation="0 0 0"
+                scale="1 1 1"
+            >
+
+                <a-entity mixin="panel"></a-entity>
+
+                <a-entity
+                    mixin="accent"
+                    position="-0.73 0 0.02"
+                ></a-entity>
+
+
+                <a-text
+                    value="PROJETOS"
+
+                    position="-0.60 0.23 0.04"
+
+                    color="#38bdf8"
+
+                    width="2.6"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Sistemas acadêmicos • APIs"
+
+                    position="-0.60 0.03 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+
+                <a-text
+                    value="Aplicações web • Gestão"
+
+                    position="-0.60 -0.13 0.04"
+
+                    color="#ffffff"
+
+                    width="2.2"
+
+                    align="left"
+                ></a-text>
+
+            </a-entity>
+
+
+            <!-- =================================================
+                 ELEMENTO CENTRAL
+                 Demonstra Rotation
+            ================================================== -->
+
+            <a-entity
+                position="0 0 0.10"
+
+                rotation="0 0 0"
+
+                scale="1 1 1"
+
+                animation="
+                    property: rotation;
+                    to: 0 360 0;
+                    loop: true;
+                    dur: 9000;
+                    easing: linear
+                "
+            >
+
+                <a-ring
+                    radius-inner="0.16"
+
+                    radius-outer="0.20"
+
+                    color="#38bdf8"
+
+                    material="
+                        shader: flat;
+                        opacity: 0.9
+                    "
+                ></a-ring>
+
+            </a-entity>
+
+
+        </a-entity>
+
+    </a-scene>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+CONFIGURAÇÃO DO PROJETO
+========================
+
+Arquivo esperado pelo aplicativo:
+
+assets/targets/targets.mind
+
+
+TARGET
+======
+
+O aplicativo utiliza o primeiro target
+do arquivo .mind.
+
+Índice utilizado:
+
+targetIndex: 0
+
+
+INFORMAÇÕES APRESENTADAS
+========================
+
+Nome:
+Eduardo Duran
+
+Área:
+Desenvolvimento de Sistemas
+
+Informações:
+- Sobre mim
+- Habilidades
+- Projetos
+
+
+TECNOLOGIAS
+===========
+
+HTML
+CSS
+JavaScript
+A-Frame
+MindAR
+Image Tracking
+GitHub Pages
