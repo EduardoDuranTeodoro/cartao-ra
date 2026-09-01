@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eduardo Duran Teodoro - Cartão RA</title>
 
-    <!-- A-Frame (1.3.0) -->
+    <!-- A-Frame (Versão 1.3.0) -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 
-    <!-- MindAR para A-Frame (1.2.2) -->
+    <!-- MindAR para A-Frame (Versão 1.2.2) -->
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
     <link rel="stylesheet" href="css/style.css" />
@@ -21,76 +21,24 @@
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
     >
+      <a-assets>
+        <!-- Carrega a imagem exata do Canva -->
+        <img id="meuCartao" src="./assets/images/cartao.png" />
+      </a-assets>
+
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- Target 0: Cartão Profissional -->
+      <!-- Target 0: Quando reconhecer o cartão impresso/tela -->
       <a-entity mindar-image-target="targetIndex: 0">
         
-        <!-- Bloco 1 (Topo): Nome e Cargo -->
+        <!-- Renderiza a imagem do cartão com efeito 3D flutuante -->
         <a-plane
-          position="0 0.28 0"
-          scale="0.65 0.18 1"
-          color="#0F172A"
-          opacity="0.95"
-        >
-          <a-text
-            value="Eduardo Duran Teodoro\nDesenvolvedor Back-end"
-            align="center"
-            width="1.3"
-            color="#FFFFFF"
-            position="0 0 0.03"
-          ></a-text>
-        </a-plane>
-
-        <!-- Bloco 2 (Esquerda): Sobre Mim -->
-        <a-plane
-          position="-0.38 0 0"
-          rotation="0 10 0"
-          scale="0.4 0.42 1"
-          color="#1E293B"
-          opacity="0.92"
-        >
-          <a-text
-            value="SOBRE MIM\nEmpreendedor (Limpeza Auto)\nOperador no Mercado\nFoco em Tech e Agronomia\n\nFORMACAO\n- ADS no SENAI\n- Eng. Agronomo"
-            align="center"
-            width="1.0"
-            color="#38BDF8"
-            position="0 0 0.03"
-          ></a-text>
-        </a-plane>
-
-        <!-- Bloco 3 (Direita): Tecnologias -->
-        <a-plane
-          position="0.38 0 0"
-          rotation="0 -10 0"
-          scale="0.4 0.42 1"
-          color="#1E293B"
-          opacity="0.92"
-        >
-          <a-text
-            value="TECNOLOGIAS\n- HTML5 / CSS3 / JS\n- React.js\n- Git & GitHub\n- Mercado Financeiro\n- Gestao de Negocios"
-            align="center"
-            width="1.0"
-            color="#38BDF8"
-            position="0 0 0.03"
-          ></a-text>
-        </a-plane>
-
-        <!-- Bloco 4 (Base): Contato -->
-        <a-plane
-          position="0 -0.28 0"
-          scale="0.65 0.14 1"
-          color="#0F172A"
-          opacity="0.95"
-        >
-          <a-text
-            value="eduardoduranteodoro@gmail.com"
-            align="center"
-            width="1.2"
-            color="#38BDF8"
-            position="0 0 0.03"
-          ></a-text>
-        </a-plane>
+          src="#meuCartao"
+          position="0 0 0.05"
+          height="0.6"
+          width="1.0"
+          rotation="0 0 0"
+        ></a-plane>
 
       </a-entity>
     </a-scene>
